@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Menempuh Hidup Baru</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #fdf5f7; /* Warna pink pastel lembut */
+            font-family: 'Georgia', serif;
+            overflow: hidden;
+        }
+
+        .card {
+            text-align: center;
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1;
+            max-width: 500px;
+            border: 2px solid #eec1cc;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Animasi Muncul Card */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            color: #d63384;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            animation: slideDown 1.5s ease-out;
+        }
+
+        p {
+            color: #555;
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        .heart {
+            color: #e25555;
+            font-size: 50px;
+            animation: beat 1s infinite;
+            margin: 20px 0;
+        }
+
+        /* Animasi Detak Jantung */
+        @keyframes beat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* Animasi Partikel Kelopak Bunga Berjatuhan */
+        .petal {
+            position: absolute;
+            background: #ffc0cb;
+            border-radius: 150% 0 150% 0;
+            width: 15px;
+            height: 15px;
+            top: -10%;
+            z-index: 0;
+            opacity: 0.7;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+                left: calc(var(--left-pos) + 20%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <embed src="lagu.mp3" loop="true" autostart="true" hidden="true" width="0" height="0">
+
+    <div class="card">
+        <div class="heart">❤</div>
+        <h1>Happy Wedding</h1>
+        <p>Selamat Menempuh Hidup Baru!</p>
+        <p>Semoga cinta kalian terus tumbuh dan menjadi pasangan yang bahagia selamanya.</p>
+        <p><strong>Barakallahu lakum wa baraka 'alaikum...</strong></p>
+    </div>
+
+    <!-- Script untuk membuat efek kelopak bunga jatuh secara otomatis -->
+    <script>
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.classList.add('petal');
+            petal.style.left = Math.random() * 100 + 'vw';
+            petal.style.animationDuration = Math.random() * 3 + 2 + 's'; // Antara 2-5 detik
+            petal.style.setProperty('--left-pos', Math.random() * 20 + '%');
+            
+            document.body.appendChild(petal);
+
+            // Hapus elemen setelah animasi selesai agar tidak membebani memori
+            setTimeout(() => {
+                petal.remove();
+            }, 5000);
+        }
+
+        // Jalankan fungsi setiap 300ms
+        setInterval(createPetal, 300);
+    </script>
+</body>
+</html>

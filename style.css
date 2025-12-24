@@ -1,0 +1,108 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden; /* Hide overflow for animations */
+}
+
+.container {
+    text-align: center;
+    perspective: 1000px; /* For 3D effects */
+}
+
+.card {
+    background-color: black;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgb(252, 252, 252);
+    transform-style: preserve-3d;
+    animation: fadeIn 2s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.title {
+    color: #ffffff;
+    font-size: 2.5em;
+    animation: popIn 1s ease-out 1s forwards; /* Delay 1s */
+    opacity: 0;
+}
+
+@keyframes popIn {
+    from { opacity: 0; transform: scale(1); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.message {
+    color: #ffffff;
+    font-size: 1.2em;
+    margin: 20px 0;
+}
+
+.sender {
+    color: #ffffff;
+    font-style: italic;
+}
+
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #ff0000;
+    transform: rotate(-45deg);
+    display: none; /* Hidden by default, shown by JS */
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #ff0000;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -10px;
+    left: 0;
+}
+
+.heart::after {
+    left: 10px;
+    top: 0;
+}
+
+/* Animation for individual hearts */
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(-45deg) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-500px) rotate(-45deg) scale(0.5);
+        opacity: 0;
+    }
+}
+.tombol-utama {
+  background-color: #007bff; /* Warna latar belakang */
+  color: rgb(2, 2, 2);             /* Warna teks */
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  padding: 10px 20px;       /* Ruang dalam (atas/bawah, kiri/kanan) */
+  border: none;             /* Hapus border default */
+  border-radius: 5px;       /* Sudut melengkung */
+  font-size: 16px;          /* Ukuran font */
+  cursor: pointer;          /* Kursor tangan saat di-hover */
+  transition: background-color 0.3s; /* Efek transisi */
+}
+
+.tombol-utama:hover {
+  background-color: #0056b3; /* Warna saat di-hover */
+}
